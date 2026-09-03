@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greenhouse Log — Plant Care Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="wordmark">
+      <span class="wordmark__mark">&#127807;</span>
+      <div>
+        <p class="wordmark__title">Greenhouse Log</p>
+        <p class="wordmark__sub">a plant care assistant</p>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <button class="nav__item is-active" data-view="dashboard">
+        <span class="nav__index">01</span> Dashboard
+      </button>
+      <button class="nav__item" data-view="library">
+        <span class="nav__index">02</span> Plant Library
+      </button>
+      <button class="nav__item" data-view="reminders">
+        <span class="nav__index">03</span> Watering Reminders
+      </button>
+      <button class="nav__item" data-view="journal">
+        <span class="nav__index">04</span> Care Journal
+      </button>
+    </nav>
+
+    <div class="sidebar__foot">
+      <p>Every plant here is tracked locally in your browser — no account needed.</p>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <!-- DASHBOARD -->
+    <section class="view is-active" id="view-dashboard">
+      <header class="view__head">
+        <h1>Today in the greenhouse</h1>
+        <p class="view__lede">A quick read on what needs water, what's thriving, and what you've logged lately.</p>
+      </header>
+
+      <div class="stat-row" id="dashboard-stats"></div>
+
+      <div class="dashboard-grid">
+        <div class="panel">
+          <h2>Due for water</h2>
+          <ul class="due-list" id="dashboard-due"></ul>
+        </div>
+        <div class="panel">
+          <h2>Recent journal entries</h2>
+          <ul class="due-list" id="dashboard-journal"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIBRARY -->
+    <section class="view" id="view-library">
+      <header class="view__head">
+        <h1>Plant library</h1>
+        <p class="view__lede">Every plant you're growing, with the care notes that matter.</p>
+      </header>
+
+      <form class="add-form" id="plant-form">
+        <input type="text" name="name" placeholder="Plant name" required>
+        <input type="text" name="species" placeholder="Species (optional)">
+        <select name="light">
+          <option value="Low light">Low light</option>
+          <option value="Indirect light">Indirect light</option>
+          <option value="Bright light" selected>Bright light</option>
+        </select>
+        <select name="frequency">
+          <option value="3">Water every 3 days</option>
+          <option value="5">Water every 5 days</option>
+          <option value="7" selected>Water every 7 days</option>
+          <option value="10">Water every 10 days</option>
+          <option value="14">Water every 14 days</option>
+        </select>
+        <button type="submit">Add plant</button>
+      </form>
+
+      <div class="plant-grid" id="library-grid"></div>
+    </section>
+
+    <!-- REMINDERS -->
+    <section class="view" id="view-reminders">
+      <header class="view__head">
+        <h1>Watering reminders</h1>
+        <p class="view__lede">Sorted by urgency — mark a plant watered to reset its clock.</p>
+      </header>
+
+      <div class="reminder-list" id="reminders-list"></div>
+    </section>
+
+    <!-- JOURNAL -->
+    <section class="view" id="view-journal">
+      <header class="view__head">
+        <h1>Care journal</h1>
+        <p class="view__lede">Notes on growth, trouble spots, and anything worth remembering.</p>
+      </header>
+
+      <form class="journal-form" id="journal-form">
+        <select name="plantId" id="journal-plant-select" required></select>
+        <textarea name="note" placeholder="What did you notice today?" required></textarea>
+        <button type="submit">Add entry</button>
+      </form>
+
+      <ul class="journal-list" id="journal-list"></ul>
+    </section>
+
+  </main>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/library.js"></script>
+<script src="js/reminders.js"></script>
+<script src="js/journal.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

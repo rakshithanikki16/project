@@ -1,0 +1,415 @@
+/* ==========================================================================
+   Greenhouse Log — design tokens
+   Forest #1B3A2F   Moss #4A7856   Parchment #F1EDE2
+   Clay #A85C32     Ink #22261F    Sage #DCE5D3
+   ========================================================================== */
+
+:root {
+  --forest: #1B3A2F;
+  --forest-dark: #12271F;
+  --moss: #4A7856;
+  --moss-light: #6E9A79;
+  --parchment: #F1EDE2;
+  --clay: #A85C32;
+  --clay-light: #D98E5F;
+  --ink: #22261F;
+  --sage: #DCE5D3;
+  --sage-line: #C6D2BC;
+  --paper-line: #DAD4C4;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--parchment);
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea { font-family: inherit; font-size: inherit; }
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ============ APP SHELL ============ */
+
+.app {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+/* ============ SIDEBAR ============ */
+
+.sidebar {
+  background: var(--forest);
+  color: var(--parchment);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.wordmark {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(241, 237, 226, 0.18);
+  margin-bottom: 1.75rem;
+}
+
+.wordmark__mark { font-size: 1.7rem; line-height: 1; }
+
+.wordmark__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: 0 0 0.15rem;
+  letter-spacing: 0.01em;
+}
+
+.wordmark__sub {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--sage);
+  opacity: 0.75;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.nav__item {
+  text-align: left;
+  color: var(--parchment);
+  padding: 0.65rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  opacity: 0.72;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.nav__index {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  color: var(--moss-light);
+}
+
+.nav__item:hover { opacity: 1; background: rgba(241, 237, 226, 0.06); }
+
+.nav__item.is-active {
+  opacity: 1;
+  background: rgba(241, 237, 226, 0.1);
+  box-shadow: inset 3px 0 0 var(--clay-light);
+}
+
+.sidebar__foot {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(241, 237, 226, 0.18);
+  font-size: 0.78rem;
+  color: var(--sage);
+  opacity: 0.65;
+  line-height: 1.5;
+}
+
+/* ============ MAIN ============ */
+
+.main {
+  padding: 3rem 3.5rem 4rem;
+  max-width: 900px;
+}
+
+.view { display: none; }
+.view.is-active { display: block; }
+
+.view__head { margin-bottom: 2.25rem; max-width: 46ch; }
+
+.view__head h1 {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.view__lede {
+  margin: 0;
+  color: var(--ink);
+  opacity: 0.68;
+  line-height: 1.55;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+}
+
+/* ============ DASHBOARD ============ */
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--paper-line);
+  border: 1px solid var(--paper-line);
+  margin-bottom: 2.5rem;
+}
+
+.stat {
+  background: var(--parchment);
+  padding: 1.25rem 1.4rem;
+}
+
+.stat__value {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  display: block;
+  color: var(--forest);
+}
+
+.stat__label {
+  font-size: 0.82rem;
+  opacity: 0.65;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.panel { min-width: 0; }
+
+.due-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.due-list li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--paper-line);
+  font-size: 0.92rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.due-list li:first-child { padding-top: 0; }
+
+.due-list .empty { opacity: 0.55; font-style: italic; border-bottom: none; }
+
+.tag {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.tag--urgent { background: var(--clay); color: var(--parchment); }
+.tag--soon { background: var(--sage); color: var(--forest); }
+.tag--ok { background: transparent; color: var(--moss); border: 1px solid var(--moss-light); }
+
+/* ============ FORMS ============ */
+
+.add-form, .journal-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 1.25rem;
+  background: var(--sage);
+  border: 1px solid var(--sage-line);
+  margin-bottom: 2rem;
+}
+
+.add-form input,
+.add-form select,
+.journal-form select,
+.journal-form textarea {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--sage-line);
+  background: var(--parchment);
+  color: var(--ink);
+  border-radius: 2px;
+}
+
+.add-form input[name="name"] { flex: 1 1 160px; }
+.add-form input[name="species"] { flex: 1 1 160px; }
+.add-form select { flex: 1 1 150px; }
+
+.journal-form { flex-direction: column; align-items: stretch; }
+.journal-form textarea { min-height: 80px; resize: vertical; }
+
+.add-form button, .journal-form button {
+  background: var(--forest);
+  color: var(--parchment);
+  padding: 0.6rem 1.3rem;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  transition: background 0.15s ease;
+}
+
+.add-form button:hover, .journal-form button:hover { background: var(--forest-dark); }
+
+/* ============ PLANT LIBRARY ============ */
+
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--paper-line);
+  border: 1px solid var(--paper-line);
+}
+
+.plant-card {
+  background: var(--parchment);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.plant-card__name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.plant-card__species {
+  font-size: 0.82rem;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.plant-card__meta {
+  font-size: 0.8rem;
+  opacity: 0.75;
+  margin-top: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.plant-card__remove {
+  align-self: flex-start;
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--clay);
+  opacity: 0.75;
+}
+
+.plant-card__remove:hover { opacity: 1; text-decoration: underline; }
+
+/* ============ REMINDERS ============ */
+
+.reminder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--paper-line);
+  border: 1px solid var(--paper-line);
+}
+
+.reminder-row {
+  background: var(--parchment);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reminder-row__info { display: flex; flex-direction: column; gap: 0.2rem; }
+.reminder-row__name { font-family: var(--font-display); font-size: 1.02rem; }
+.reminder-row__detail { font-size: 0.82rem; opacity: 0.65; }
+
+.reminder-row__actions { display: flex; align-items: center; gap: 0.75rem; }
+
+.btn-water {
+  background: var(--moss);
+  color: var(--parchment);
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.btn-water:hover { background: var(--forest); }
+
+/* ============ JOURNAL ============ */
+
+.journal-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--paper-line);
+  border: 1px solid var(--paper-line);
+}
+
+.journal-entry {
+  background: var(--parchment);
+  padding: 1rem 1.25rem;
+}
+
+.journal-entry__head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-bottom: 0.35rem;
+}
+
+.journal-entry__plant { font-weight: 600; opacity: 1; color: var(--forest); }
+
+.journal-entry__note { line-height: 1.5; font-size: 0.95rem; }
+
+.empty-note { opacity: 0.55; font-style: italic; padding: 1rem 0; }
+
+/* ============ RESPONSIVE ============ */
+
+@media (max-width: 860px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; }
+  .nav { flex-direction: row; flex-wrap: wrap; }
+  .main { padding: 2rem 1.5rem 3rem; }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .stat-row { grid-template-columns: 1fr; }
+}
