@@ -410,8 +410,6 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
 .empty-note { opacity: 0.55; font-style: italic; padding: 1rem 0; }
 
 /* ============ RESPONSIVE ============ */
-
-@media (max-width: 860px) {
 /* ============ DARK MODE ============ */
 
 body.dark-mode {
@@ -440,10 +438,13 @@ body.dark-mode .sidebar {
 }
 
 
+/* ============ RESPONSIVE ============ */
 
 
 
 
+
+@media (max-width: 860px) {
   .app { grid-template-columns: 1fr; }
   .sidebar { position: static; height: auto; }
   .nav { flex-direction: row; flex-wrap: wrap; }
