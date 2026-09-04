@@ -304,11 +304,7 @@ h2 {
   gap: 0.35rem;
 }
 
-.plant-card:hover{
-transform: translateY(-3px);
-box-shadow:0 4px 12px rgba(27, 58, 47, 0.15);
-transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+
 
 .plant-card__name {
   font-family: var(--font-display);
@@ -412,38 +408,6 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
 /* ============ RESPONSIVE ============ */
 
 @media (max-width: 860px) {
-/* ============ DARK MODE ============ */
-
-body.dark-mode {
-  --parchment: #1E2420;
-  --ink: #F1EDE2;
-  --paper-line: #3A443D;
-  --sage: #29352E;
-  --sage-line: #46554A;
-}
-
-body.dark-mode .sidebar {
-  background: #0F1C16;
-}
-
-.theme-toggle {
-  margin-top: 1rem;
-  padding: 0.6rem;
-  color: var(--parchment);
-  border: 1px solid rgba(241, 237, 226, 0.25);
-  border-radius: 4px;
-  text-align: center;
-}
-
-.theme-toggle:hover {
-  background: rgba(241, 237, 226, 0.1);
-}
-
-
-
-
-
-
   .app { grid-template-columns: 1fr; }
   .sidebar { position: static; height: auto; }
   .nav { flex-direction: row; flex-wrap: wrap; }
