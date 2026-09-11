@@ -24,7 +24,7 @@ const Library = (() => {
             <span>${escapeHtml(p.light)}</span>
             <span>Water every ${p.frequency} days</span>
             <span>Last watered ${Store.daysSince(p.lastWatered)}d ago</span>
-<span class="plant-status">🌱 Healthy</span>
+<span class="plant-status">🌱 Healthy🪴</span>
           </div>
           <button class="plant-card__remove" data-remove="${p.id}">Remove</button>
         </article>`
